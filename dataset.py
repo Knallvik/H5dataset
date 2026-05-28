@@ -137,6 +137,8 @@ class Dataset:
         WARNING: DO NOT USE THIS WHEN LOOPING OVER IMAGES TO DO ANALYSIS!!
         The function to get a single image loops through the iterator to get to the index, 
         so looping over 1000 shots would mean going through 1000! loops. Most of which in C, but still.
+
+        Not the best way of implementing this. much faster to get image_obj from h5py and index the shot...
         """
         from itertools import islice
         
