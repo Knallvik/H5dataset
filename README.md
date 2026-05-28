@@ -1,6 +1,7 @@
 Class to read SLAC datasets.
 
 Use ex.:
+
     import sys
     sys.path.append(path/to/this_repo)
     from dataset import Dataset
