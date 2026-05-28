@@ -10,7 +10,7 @@ Use ex.:
     scalars = data.data_struct.scalars (All data is in "data_struct")
     common_index = scalars.common_index
     camera = "DTOTR2"
-    images = data.get_images(camera) np.ndarray with shape (shots, y-dim, x-dim)
+    images = data.get_images(camera) (np.ndarray with shape (shots, y-dim, x-dim))
 
     
 
