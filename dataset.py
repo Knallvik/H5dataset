@@ -84,18 +84,25 @@ class Dataset:
 
             if memory_efficient: # Dont keep the images stored in memory
                 def _generator_function():
-                    for i, loc in enumerate(locs):
-                        im_obj = h5py.File(loc)['entry/data/data']
-                        # for analysis that require looping through images
-                        for j, im in enumerate(im_obj):
-                            if i+j in common_index:
-                                im = im.astype(np.int16)
-                                if metadata.IS_ROTATED==1:
-                                    im = im.T
-                                if camera=="CHER":
-                                    im[270:410,1140:1190] = 0
-                                yield Image(im)
+                    # Convert to set for instant O(1) lookups (do this outside the loop!)
+                    valid_indices = set(common_index) 
+                    abs_idx = 0 
+                    
+                    for loc in locs:
+                        # Context manager ensures files actually close when you move to the next one
+                        with h5py.File(loc, 'r') as f: 
+                            im_obj = f['entry/data/data']
+                            
+                            for im in im_obj:
+                                if abs_idx in valid_indices:
+                                    im = im.astype(np.int16)
+                                    if metadata.IS_ROTATED == 1:
+                                        im = im.T
+                                    if camera == "CHER":
+                                        im[270:410, 1140:1190] = 0
+                                    yield Image(im)
                                 
+                                abs_idx += 1
                 return _generator_function
                         
             else:
@@ -159,7 +166,7 @@ class Dataset:
     
             if medfilt:
                 print("Performing median filtering")
-                images = median_filter(images, (1,5,5))
+                images = median_filter(images, (1,3,3))
         else:
             if roi_y:
                 images = images[roi_y[0]:roi_y[1], :]
