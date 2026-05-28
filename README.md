@@ -1,6 +1,7 @@
 Class to read SLAC datasets.
 
 Use ex.:
+
     from dataset import Dataset
     file_path = "your/path/dataset.mat"
       
