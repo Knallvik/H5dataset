@@ -132,7 +132,7 @@ class Dataset:
                     
                 return Image(images)
 
-    def get_single_image(self, camera, n_index, memory_efficient=False):
+    def get_single_image(self, camera, n_index):
         """
         WARNING: DO NOT USE THIS WHEN LOOPING OVER IMAGES TO DO ANALYSIS!!
         The function to get a single image loops through the iterator to get to the index, 
