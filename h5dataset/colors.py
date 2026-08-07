@@ -1,3 +1,6 @@
+"""
+colors.py
+"""
 import matplotlib.colors as colors
 import numpy as np
 
