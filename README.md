@@ -1,13 +1,12 @@
-Class to read SLAC datasets.
+Classes to read matlab datasets. Extra classes for DESY/SLAC are included to read images.
 
 Use ex.:
+    from root, do pip install -e .
 
-    import sys
-    sys.path.append(path/to/this_repo)
-    from dataset import Dataset
+    from desy_dataset import FACET_dataset
     file_path = "your/path/dataset.mat"
       
-    data = Dataset(file_path)
+    data = FACET_dataset(file_path)
         
     scalars = data.data_struct.scalars (All data is in "data_struct")
     common_index = scalars.common_index
