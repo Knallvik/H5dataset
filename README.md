@@ -1,7 +1,8 @@
 Classes to read matlab datasets. Extra classes for DESY/SLAC are included to read images.
 
 Use ex.:
-    from root, do pip install -e .
+    from root, do 
+    pip install -e .
 
     from desy_dataset import FACET_dataset
     file_path = "your/path/dataset.mat"
