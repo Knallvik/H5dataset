@@ -2,15 +2,9 @@ import numpy as np
 import h5py
 import scipy.io
 import os
-import sys
 import re
 import keyword
 from pathlib import Path
-from typing import Literal
-from scipy.signal import medfilt2d
-from scipy.ndimage import median_filter
-from IPython.display import display, clear_output
-from h5dataset.colors import FLASHForward
 
 
 class Dataset:
@@ -172,8 +166,6 @@ class Dataset:
 
                         setattr(parent_class, safe_key, value_arr)
 
-        else:
-            raise NotImplementedError("Support for .mat files read by h5py not implemented")
 
     
 

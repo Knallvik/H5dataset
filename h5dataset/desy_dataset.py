@@ -136,7 +136,6 @@ class DESY_dataset(Dataset):
                             camera=None,
                             images=None,
                             clean=False,
-                            memory_efficient=False,
                             cmap="viridis",
                             clim=None,
                             xlim=None,    # (xmin, xmax) in array column indices
@@ -159,7 +158,7 @@ class DESY_dataset(Dataset):
             if camera is None:
                 raise ValueError("You must provide either a 'camera' name or an 'images' array.")
             
-            images = self.get_images(camera, memory_efficient=memory_efficient)
+            images = self.get_images(camera)
 
             if callable(images) and not isinstance(images, np.ndarray):
                 if self.verbose:
