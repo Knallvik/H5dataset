@@ -17,7 +17,7 @@ Use ex.:
 
 for .mat datasets not from SLAC or FLASHForward:
 
-    from dataset import Dataset
+    from h5dataset.dataset import Dataset
     file_path = "your/path/dataset.mat"
       
     data = Dataset(file_path)
