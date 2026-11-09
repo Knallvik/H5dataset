@@ -9,8 +9,8 @@ def find_dataset(data_id: Union[str, int], directory: str, depth: int = 8):
         directory = Path(directory)
         #list content of dir
         dirs = os.listdir(directory)
-        #ensure data_id can be input as int
-        data_id = str(data_id)
+        #ensure data_id can be input as int, also make sure it can find a name with an extension
+        data_id = str(data_id).split('.')[0]
         #check if we reached our data_set
         final_path = None
         
